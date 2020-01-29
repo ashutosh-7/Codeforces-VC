@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define llu unsigned long long int
+#define pb push_back
+#define vi vector<int>
+#define translow transform(s.begin(),s.end(),s.begin(),::tolower);
+#define transup transform(s.begin(),s.end(),s.begin(),::toupper);
+#define endl "\n"
+#define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+ll mod=1e9+7;
+ll fun(ll n)
+{
+	ll ans=n;
+	for(ll i=2;i*i<=n;i++)
+	{
+		if(n%i==0)
+		{
+			while(n%i==0)
+			{
+				n=n/i;
+				//ans-=ans/i;
+			}
+			ans-=ans/i;
+		}
+	}
+	    if(  n > 1)
+        ans -= ans/ n;
+    return ans;
+}
+int main() {
+				fast
+				ll t;
+				cin>>t;
+				while(t--)
+				{
+
+			ll n,m;
+			cin>>n>>m;
+			ll y=__gcd(n,m);
+			ll x=fun(m/y);
+			cout<<x<<endl;
+	}
+	return 0;
+}
