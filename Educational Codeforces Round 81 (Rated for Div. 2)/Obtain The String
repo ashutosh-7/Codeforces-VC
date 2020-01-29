@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define llu unsigned long long int
+#define pb push_back
+#define vi vector<int>
+#define translow transform(s.begin(),s.end(),s.begin(),::tolower);
+#define transup transform(s.begin(),s.end(),s.begin(),::toupper);
+#define endl "\n"
+#define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+ll mod=1e9+7;
+int main() {
+				fast
+				ll t;
+				cin>>t;
+				while(t--)
+				{
+
+			string a,b;
+			cin>>a>>b;
+		
+			ll count=0;
+		//	ll id=0;
+			ll x=a.size();
+			ll y=b.size();
+			map<char,ll>j,k;
+			for(ll i=0;i<y;i++)
+			{
+				j[b[i]]++;
+			}
+			string up="";
+			for(ll i=0;i<x;i++)
+			{
+				if(j[a[i]]>=1)
+				up+=a[i];
+			}
+			
+			//ll count=0;
+			ll id=0;
+			ll tmp=0;
+			//cout<<up<<endl;
+			for(ll i=0;i<y;)
+			{
+			      tmp=i;
+				  for(ll j=0;j<up.size();j++)
+				  {
+				  	if(b[tmp]==up[j])
+				  	{
+				  		tmp++;
+					}
+					
+				  }	
+				  if(i==tmp)
+				  {
+				  	id=1;
+				  	break;
+				  }
+				  i=tmp;
+				  count++;
+				 // cout<<count<<" ";
+			}
+			if(id==1)
+			cout<<-1<<endl;
+			else
+			cout<<count<<endl;
+	}
+	return 0;
+}
