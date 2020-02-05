@@ -1,0 +1,67 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define llu unsigned long long int
+#define pb push_back
+#define vi vector<int>
+#define translow transform(s.begin(),s.end(),s.begin(),::tolower);
+#define transup transform(s.begin(),s.end(),s.begin(),::toupper);
+#define mp make_pair
+#define endl "\n"
+#define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+ll mod=1e9+7;
+int main() {
+				fast
+				ll t;
+				cin>>t;
+				while(t--)
+				{
+
+		ll n;
+		cin>>n;
+		string s;
+		cin>>s;
+		ll a,b;
+		ll len=LLONG_MAX;
+		ll x=0,y=0;
+		map<pair<ll,ll> ,ll> id;
+		id[mp(0,0)]=0;
+		for(ll i=0;i<n;i++)
+		{
+		//	cout<<"sj";
+			if(s[i]=='L')
+			x-=1;
+			else if(s[i]=='R')
+			x+=1;
+			else if(s[i]=='U')
+			y+=1;
+			else
+			y-=1;
+		
+		if(id.find(mp(x,y))!=id.end())
+		{
+			ll p=i-id[mp(x,y)];
+			if(len>p)
+			{
+				len=p;
+				a=id[mp(x,y)]+1;
+				b=i+1;
+			}
+		}
+		id[mp(x,y)]=i+1;
+	//	cout<<id[{x,y}]<<" ";
+		
+	}
+	if(len!=LLONG_MAX)
+	cout<<a<<" "<<b<<endl;
+	else
+	cout<<-1<<endl;
+	
+	
+//	for(auto it=id.begin();it!=id.end();it++)
+//	{
+//		cout<<it->second<<" ";
+//	}
+}
+	return 0;
+}
