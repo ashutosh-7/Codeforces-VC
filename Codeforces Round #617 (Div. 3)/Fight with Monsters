@@ -1,0 +1,69 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define llu unsigned long long int
+#define pb push_back
+#define vi vector<int>
+#define translow transform(s.begin(),s.end(),s.begin(),::tolower);
+#define transup transform(s.begin(),s.end(),s.begin(),::toupper);
+#define endl "\n"
+#define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+ll mod=1e9+7;
+int main() {
+				fast
+				ll n,a,b,k;
+				cin>>n>>a>>b>>k;
+				ll arr[n];
+				for(ll i=0;i<n;i++)
+				cin>>arr[i];
+				
+				vi v;
+				ll count=0;
+				for(ll i=0;i<n;i++)
+				{
+					ll temp=arr[i]%(a+b);
+					//temp-=a;
+					if(temp==0 )
+					{
+						v.pb(b);
+					}
+					else if((temp>a and temp<a+b))
+					{
+						temp-=a;
+						v.pb(temp);
+						
+					}
+					
+					else
+					count++;
+				}
+				ll need [v.size()];
+				n=v.size();
+			
+				for(ll i=0;i<n;i++)
+				{
+				
+					ll temp=v[i];
+					need[i]=(temp+a-1)/a;
+				
+				}
+				sort(need,need+n);
+
+				ll x=0;
+			//	cout<<count<<endl;
+				for(ll i=0;i<n;i++)
+				{
+					if(k>=need[i])
+					{
+						k-=need[i];
+						count++;
+					}
+				
+					if(k<=0)
+					break;
+				}
+				cout<<count<<endl;
+				
+				
+	return 0;
+}
